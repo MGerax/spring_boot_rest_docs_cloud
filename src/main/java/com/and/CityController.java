@@ -4,11 +4,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
+
 @RestController
 @RequestMapping("/city")
 public class CityController {
     @Autowired
     private CityRepository cityRepository;
+
+    @PostConstruct
+    public void init() {
+        cityRepository.save(new City("Dublin", "The best city"));
+    }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public Iterable<City> listCity() {
