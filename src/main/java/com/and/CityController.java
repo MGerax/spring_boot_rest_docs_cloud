@@ -11,9 +11,14 @@ import javax.annotation.PostConstruct;
 public class CityController {
     @Autowired
     private CityRepository cityRepository;
+    @Autowired
+    private ApplicationConfig applicationConfig;
 
     @PostConstruct
     public void init() {
+        System.out.println(applicationConfig.getName() + " is run");
+        System.out.println("Service version: " + applicationConfig.getVersion());
+        System.out.println("There are " + applicationConfig.getImplementations() + " implementations in service");
         cityRepository.save(new City("Dublin", "The best city"));
     }
 

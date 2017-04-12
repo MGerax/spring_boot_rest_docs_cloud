@@ -1,3 +1,9 @@
 spring:
   application:
     name: city-service
+    version: 134
+    implementations:
+      - controller
+      - repository
+      - domain
+      - configuration
